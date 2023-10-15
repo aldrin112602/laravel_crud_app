@@ -12,14 +12,18 @@ class Update extends Component
 
     public $student;
 
+    public $name;
+    public $email;
     
     protected $rules = [
-        
+        'name' => 'required',
+        'email' => 'required',        
     ];
 
     public function mount(Student $Student){
         $this->student = $Student;
-        
+        $this->name = $this->student->name;
+        $this->email = $this->student->email;        
     }
 
     public function updated($input)
@@ -35,6 +39,8 @@ class Update extends Component
         $this->dispatchBrowserEvent('show-message', ['type' => 'success', 'message' => __('UpdatedMessage', ['name' => __('Student') ]) ]);
         
         $this->student->update([
+            'name' => $this->name,
+            'email' => $this->email,
             'user_id' => auth()->id(),
         ]);
     }
