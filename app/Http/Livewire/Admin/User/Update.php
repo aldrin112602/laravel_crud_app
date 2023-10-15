@@ -17,7 +17,9 @@ class Update extends Component
     public $password;
     
     protected $rules = [
-        
+        'name' => 'required',
+        'email' => 'required',
+        'password' => 'required',        
     ];
 
     public function mount(User $User){

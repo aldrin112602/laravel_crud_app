@@ -15,7 +15,9 @@ class Create extends Component
     public $password;
     
     protected $rules = [
-        
+        'name' => 'required',
+        'email' => 'required',
+        'password' => 'required',        
     ];
 
     public function updated($input)
